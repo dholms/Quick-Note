@@ -1,0 +1,13 @@
+.sidebar-note h4{
+  display: block;
+  font-size: 12pt;
+}
+
+.sidebar-note .date{
+  font-size: 10pt;
+  color:#bbb;
+}
+
+.sidebar-note.selected{
+  background-color: rgba(0,0,0,0.04);
+}

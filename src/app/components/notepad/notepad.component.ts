@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MdDialog, MdDialogRef} from '@angular/material';
+import { Note } from '../../interfaces/note';
 
 import { DialogComponent } from '../dialog/dialog.component';
 
@@ -23,7 +24,7 @@ export class NotepadComponent implements OnInit {
     this.currNote=this.notes[0];
   }
 
-  ngOnInit(){    
+  ngOnInit(){
   }
 
   loadNotes(){
@@ -38,6 +39,9 @@ export class NotepadComponent implements OnInit {
   }
 
   selectNote(note){
+    if(this.notes.indexOf(note) < 0){
+      this.notes.push(note);
+    }
     this.currNote = note;
   }
 
@@ -46,16 +50,9 @@ export class NotepadComponent implements OnInit {
     this.saveNotes();
   }
 
-  formatDate(date){
-    let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let d = new Date(date);
-    let datestring = monthNames[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
-    return datestring;
-  }
-
   newNote(){
     this.notes.push({
-      title:"New Note",
+      title:"",
       body:"",
       time: new Date(),
     });
@@ -84,10 +81,4 @@ export class NotepadComponent implements OnInit {
       }
     });
   }
-}
-
-interface Note{
-  title:string,
-  body:string,
-  time:Date
 }

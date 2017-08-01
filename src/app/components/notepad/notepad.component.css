@@ -2,20 +2,6 @@
   flex-grow: 1;
 }
 
-.sidebar-note h4{
-  display: block;
-  font-size: 12pt;
-}
-
-.sidebar-note .date{
-  font-size: 10pt;
-  color:#bbb;
-}
-
-.sidebar-note.selected{
-  background-color: rgba(0,0,0,0.04);
-}
-
 md-input-container{
   width: 100%;
 }
@@ -24,117 +10,37 @@ md-input-container{
   flex-grow: 1;
 }
 
+note-list{
+  width: 100%;
+  border-right: rgba(0,0,0,0.12) 1px solid;
+}
+
 .notepad-container{
-  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.desktop-sidebar{
+  display: none
+}
+
+.editor{
+  flex-grow: 8;
   display: flex;
   flex-direction: column;
   margin: 0 16px;
 }
 
-/*.row, .col{
-  height: 100%;
-}
-
-.notepad-container{
-  margin-top: 32px;
-  background-color: white;
-  border: #ddd 1px solid;
-  border-radius: 5px;
-  height: 80%;
-}
-
-.notepad-header{
-  height: 64px;
-  border-bottom: #ddd 1px solid;
-  background-color: #f8f8f8;
-  padding: 16px;
-  text-align: right;
-}
-
-.notepad-header .header-text{
-  text-align: center;
-}
-
-.notepad-header .btn-secondary{
-  height: 32px;
-  font-size: 10pt;
-}
-
-.notepad-body{
-  height: calc(100% - 64px);
-}
-
-.sidebar{
-  width: calc(100% + 30px);
-  height: 100%;
-  overflow-y: auto;
-}
-
-.sidebar-note{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 64px;
-  border-bottom: #ddd 1px solid;
-  padding: 16px;
-  position: relative;
-}
-
-.sidebar-note:hover{
-  background-color: #f8f8f8;
-}
-
-.sidebar-note.selected{
-  background-color: #f8f8f8;
-}
-
-.sidebar-note h4{
-  font-size: 12pt;
-  margin: 0;
-}
-
-.sidebar-note p{
-  font-size: 10pt;
-  color: #bbb;
-  margin: 0;
-  font-weight: lighter;
-}
-
-.sidebar-note .date{
-  font-size: 8pt;
-  color: #bbb;
-  font-weight: lighter;
-  float:right;
-}
-
-.notepad-main{
-  border-left: #ddd 1px solid;
-  height: 100%;
-}
-
-.notepad-main input{
-  width: 100%;
-  border: none;
-  height: 32px;
-  padding-left: 16px;
-  border-bottom: #ddd 1px solid;
-  font-weight: bold;
-}
-
-.notepad-main input:focus{
-  outline: none;
-  border-bottom: #999 1px solid;
-}
-
-.notepad-main textarea{
-  border: none;
-  padding: 16px;
-  border-radius: 0;
-  height: calc(100% - 32px);
-}
-
-@media only screen and (max-width: 991px){
-  .sidebar{
-    width: 100%;
+@media (min-width: 601px){
+  .notepad-container{
+    min-height: 600px;
+    border-bottom: rgba(0,0,0,0.12) 1px solid;
   }
-}*/
+  .desktop-sidebar{
+    display:flex;
+    flex-grow: 1
+  }
+  .menu-btn{
+    display:none;
+  }
+}

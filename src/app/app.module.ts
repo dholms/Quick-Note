@@ -7,12 +7,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NotepadComponent } from './components/notepad/notepad.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { NoteListComponent } from './components/note-list/note-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotepadComponent,
-    DialogComponent
+    DialogComponent,
+    NoteListComponent
   ],
   imports: [
     BrowserModule,
