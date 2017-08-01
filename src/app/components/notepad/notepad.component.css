@@ -1,4 +1,37 @@
-.row, .col{
+.title{
+  flex-grow: 1;
+}
+
+.sidebar-note h4{
+  display: block;
+  font-size: 12pt;
+}
+
+.sidebar-note .date{
+  font-size: 10pt;
+  color:#bbb;
+}
+
+.sidebar-note.selected{
+  background-color: rgba(0,0,0,0.04);
+}
+
+md-input-container{
+  width: 100%;
+}
+
+.note-body{
+  flex-grow: 1;
+}
+
+.notepad-container{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0 16px;
+}
+
+/*.row, .col{
   height: 100%;
 }
 
@@ -99,3 +132,9 @@
   border-radius: 0;
   height: calc(100% - 32px);
 }
+
+@media only screen and (max-width: 991px){
+  .sidebar{
+    width: 100%;
+  }
+}*/

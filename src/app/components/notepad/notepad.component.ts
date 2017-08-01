@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
+import {MdDialog, MdDialogRef} from '@angular/material';
+
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-notepad',
@@ -10,7 +14,7 @@ export class NotepadComponent implements OnInit {
   notes:Note[];
   currNote:Note;
 
-  constructor() {
+  constructor(public dialog: MdDialog) {
     this.notes = [];
     this.loadNotes();
     if(this.notes.length == 0){
@@ -19,7 +23,7 @@ export class NotepadComponent implements OnInit {
     this.currNote=this.notes[0];
   }
 
-  ngOnInit() {
+  ngOnInit(){    
   }
 
   loadNotes(){
@@ -56,18 +60,29 @@ export class NotepadComponent implements OnInit {
       time: new Date(),
     });
     this.saveNotes();
+    this.currNote = this.notes[this.notes.length-1];
   }
 
   deleteNote(){
-    for(let i=0; i < this.notes.length; i++){
-      if(this.notes[i] == this.currNote){
-        this.notes.splice(i, 1);
+    let dialogRef = this.dialog.open(DialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result == 'delete'){
+        for(let i=0; i < this.notes.length; i++){
+          if(this.notes[i] == this.currNote){
+            this.notes.splice(i, 1);
+            if(i-1 >= 0){
+              this.currNote = this.notes[i-1];
+            }else if(this.notes.length > 0){
+              this.currNote = this.notes[0];
+            }
+          }
+        }
+        if(this.notes.length < 1){
+          this.newNote();
+        }
+        this.saveNotes();
       }
-    }
-    if(this.notes.length > 0){
-      this.currNote = this.notes[0];
-    }
-    this.saveNotes();
+    });
   }
 }
 

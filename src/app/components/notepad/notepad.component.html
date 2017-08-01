@@ -1,4 +1,32 @@
-<div class="notepad-container">
+<md-sidenav-container>
+  <md-toolbar color="primary">
+    <div class="title">Quick Note</div>
+    <button type="button" md-icon-button (click)="deleteNote()"><md-icon>delete</md-icon></button>
+    <button type="button" md-icon-button (click)="sidenav.toggle()"><md-icon>menu</md-icon></button>
+  </md-toolbar>
+  <div class="notepad-container">
+    <md-input-container>
+      <input mdInput type="text" name="title" [(ngModel)]="currNote.title" (ngModelChange)='updateNote($event)'>
+    </md-input-container>
+    <md-input-container class="note-body">
+      <textarea mdInput mdTextareaAutosize [(ngModel)]="currNote.body" (ngModelChange)='updateNote($event)'>{{currNote.body}}</textarea>
+    </md-input-container>
+  </div>
+  <md-sidenav #sidenav mode="over" align="end" opened="false">
+    <md-nav-list>
+      <h3 md-subheader>Notes</h3>
+      <md-list-item *ngFor="let note of notes" class="sidebar-note" (click)="selectNote(note); sidenav.close();" [class.selected]="note == currNote">
+        <h4 md-line>{{note.title}}</h4>
+        <span md-line class="date">{{formatDate(note.time)}}</span>
+      </md-list-item>
+      <md-list-item class="sidebar-note" (click)="newNote(); sidenav.close();">
+        <h4 md-line>New Note +</h4>
+      </md-list-item>
+    </md-nav-list>
+  </md-sidenav>
+</md-sidenav-container>
+
+<!-- <div class="notepad-container">
   <div class="notepad-header">
     <div class="row">
       <div class="col col-4"></div>
@@ -29,4 +57,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
