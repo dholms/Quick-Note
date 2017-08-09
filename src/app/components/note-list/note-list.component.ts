@@ -41,7 +41,8 @@ export class NoteListComponent implements OnInit {
     this.onNotePicked.emit({
       title:"",
       body:"",
-      time: new Date()      
+      time: new Date(),
+      id: ""      
     })
   }
 

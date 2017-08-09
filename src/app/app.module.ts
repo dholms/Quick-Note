@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {MdToolbarModule, MdSidenavModule, MdButtonModule,MdListModule,MdInputModule,MdIconModule,MdDialogModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NotepadComponent } from './components/notepad/notepad.component';
@@ -26,7 +27,8 @@ import { NoteListComponent } from './components/note-list/note-list.component';
     MdListModule,
     MdInputModule,
     MdIconModule,
-    MdDialogModule
+    MdDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
